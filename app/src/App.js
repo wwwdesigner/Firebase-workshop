@@ -4,20 +4,22 @@ import {database} from './firebase'
 
 class App extends Component {
 
+    state = {
+        valueFromDatabase : 'początkowy stan'
+    }
+
     componentWillMount() {
-        database.ref("/").once('value', (snapshot) => {
-            // console.log('snapshot', snapshot)
-            // console.log('snapshot data', snapshot.valueOf())
-            snapshot.forEach((childSnapshot)=>{
-                console.log(childSnapshot.val());
-            })
+        database.ref("/").on('value', (snapshot)=>{
+            this.setState({
+                valueFromDatabase: JSON.stringify(snapshot.val())
+                })
         })
     }
 
     render(){
     return (
       <div>
-       App
+          {this.state.valueFromDatabase}
       </div>
     );
   }
