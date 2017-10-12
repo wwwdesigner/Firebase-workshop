@@ -5,7 +5,10 @@ import { database } from './firebase'
 class App extends Component {
 
     componentWillMount(){
-        database.ref("my/first/path").set("it works");
+        database.ref("/").remove()
+            .then (() => {
+            alert('usunięto!')
+        });
     }
 
     render() {
