@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { database } from './firebase'
 
 class App extends Component {
-  render() {
+
+    componentWillMount(){
+        database.ref("my/first/path").set("it works");
+    }
+
+    render() {
 
     return (
       <div>
