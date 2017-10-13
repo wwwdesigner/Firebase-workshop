@@ -4,23 +4,23 @@ import {database} from './firebase'
 
 class App extends Component {
 
-    state = {
-        valueFromDatabase : 'początkowy stan'
-    }
 
     componentWillMount() {
-        database.ref("/").on('value', (snapshot)=>{
-            this.setState({
-                valueFromDatabase: JSON.stringify(snapshot.val())
+        for (let i = 0; i < 100; i++) {
+            fetch('http://cors-proxy.htmldriven.com/?url=https://randomuser.me/api')
+                .then((response) => {
+                    return response.json()
                 })
-        })
+                .then((data) => {
+                    let userData = JSON.parse(data.body).results[0]
+                    database.ref('userList').push(userData)
+                })
+        }
     }
 
-    render(){
+    render() {
     return (
-      <div>
-          {this.state.valueFromDatabase}
-      </div>
+        <div></div>
     );
   }
 }
