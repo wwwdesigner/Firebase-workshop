@@ -13,7 +13,16 @@ class App extends Component {
                             })
                         })
     }
-
+// {
+//     "rules": {
+//         ".read": "true",
+//         ".write": "true",
+//         "userList": {
+//             ".indexOn": "nat"
+//         }
+//     }
+// }
+//
     render() {
     return (
         <div></div>
