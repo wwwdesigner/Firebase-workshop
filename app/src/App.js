@@ -6,10 +6,10 @@ class App extends Component {
 
 
     componentWillMount() {
-                    database.ref('userList').orderByChild('name/first').once('value')
+                    database.ref('userList').orderByChild('email').equalTo('jenny.king@example.com').once('value')
                         .then((snapshot)=> {
                             snapshot.forEach((childSnapshot) => {
-                                console.log(childSnapshot.val().name.first)
+                                console.log(childSnapshot.val().name)
                             })
                         })
     }
